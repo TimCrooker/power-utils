@@ -1,11 +1,6 @@
 import { readFileSync } from 'fs'
 import path from 'path'
-import {
-	mergeObjects,
-	mergePluginJsonFiles,
-	mergeJsonAndWrite,
-	mergeJsonFiles,
-} from '.'
+import { mergeObjects, mergeJsonAndWrite, mergeJsonFiles } from '.'
 
 describe('Merge functions', () => {
 	it('should merge objects', () => {
@@ -87,29 +82,6 @@ describe('Merge functions', () => {
 			},
 			b: 2,
 			babel: true,
-		})
-	})
-
-	it('should merge plugin json files', () => {
-		const base = {
-			a: 1,
-			c: {
-				e: [1, 2, 3],
-			},
-		}
-
-		const pluginsDir = path.resolve(__dirname, 'fixtures', 'plugins')
-		const pluginNames = ['a', 'b']
-		const fileName = 'pack.json'
-
-		const result = mergePluginJsonFiles(base, pluginsDir, pluginNames, fileName)
-		expect(result).toEqual({
-			a: 2,
-			b: 2,
-			c: {
-				d: 3,
-				e: [1, 2, 3, 4, 5, 6],
-			},
 		})
 	})
 })

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { GritError } from '@/error'
 import { spinner } from '@/spinner'
 import { exec } from 'child_process'
 import spawn from 'cross-spawn'
@@ -133,7 +132,7 @@ export const installPackages: InstallPackagesFn = async ({
 				logger.debug(`Sucessfully installed`, packageName)
 				resolve({ code })
 			} else {
-				reject(new GritError(`Failed to install ${packageName} in ${cwd}`))
+				reject(new Error(`Failed to install ${packageName} in ${cwd}`))
 			}
 		})
 
